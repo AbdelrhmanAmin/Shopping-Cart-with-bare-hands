@@ -1,17 +1,20 @@
 import React , { Component } from 'react';
 import './style.css';
+import Cart from '../Cart';
 class ShopList extends Component {
-  stats ={
-    item: null
+ state ={
+    item: []
   }
-  onAdd = (e) =>{
-    this.setState({
-      item: e.target.value
-    })
-    console.log(this.state)
-  }
+  onAdd = (product) =>{
+    let arr = [];
+    arr.push(product.name)
+this.setState({
+item: [...this.state.item, arr]
+})
+console.log(this.state)
+}
   render(){
-  return <div>
+  return <div className='container'>
       <h1>Shop:</h1>
     {
       this.props.products.map( product =>
@@ -20,13 +23,14 @@ class ShopList extends Component {
           <img
             height={100}
             title={product.name}
-            src={`/products/${product.image}`}
+            src={`/products/${product.image}`} alt='img'
             />
             <p>${product.price}</p>
-            <button onClick={this.onAdd.bind(this.state ,product)}>Add</button>
+            <button onClick={ () => this.onAdd(product) }>Add</button>
             </div>)
       )
     }
+    <Cart item={this.state.item} className='cart'/>
   </div>
 }}
 export default ShopList;
