@@ -2,22 +2,14 @@ import React , { Component } from 'react';
 import Shop from '../Shop';
 import './style.css';
 class Cart extends Component {
-  constructor( props ) {
-    super( props );
-    this.keyCount = 0;
-    this.getKey = this.getKey.bind(this);
-}
-getKey(){
-    return this.keyCount++;
-}
 
 
   render(){
     const listName = this.props.item.map(name => {
       return (
-        <li key={this.getKey()}>
+        <li>
         {name}
-        <button>X</button>
+        <button onClick={this.props.delItem}>X</button>
         </li>
       )
     })
