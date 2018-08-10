@@ -20,10 +20,7 @@ class ShopList extends Component {
   }
   onDelete = (index) => {
     const items = [...this.state.item];
-    if(items.lastIndexOf(index)){
-      items.splice(index, 1)
-    }
-
+    items.splice(index, 1);
     this.setState({
       item: items
     })
@@ -44,9 +41,9 @@ class ShopList extends Component {
             />
             <p>${product.price}</p>
             <button onClick={ () => this.onAdd(product) }>Add</button>
+            <Cart item={this.state.item} className='cart' delItem={this.onDelete} />
             </div>
           ))}
-          <Cart item={this.state.item} className='cart' delItem={this.onDelete} />
       </div>
 )}}
 export default ShopList;
