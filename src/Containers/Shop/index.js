@@ -20,7 +20,7 @@ class ShopList extends Component {
   }
   onDelete = (index) => {
     const items = [...this.state.item];
-    items.splice(index, 1);
+    items.splice(index, 1); //if it is the last one it deletes what above.
     this.setState({
       item: items
     })
